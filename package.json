@@ -1,0 +1,31 @@
+{
+  "name": "otwarteschroniska",
+  "version": "1.0.0",
+  "description": "Pierwsze otwarte API schronisk dla zwierząt w Polsce (CC-BY 4.0)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "keywords": [
+    "open-data",
+    "animal-shelters",
+    "poland",
+    "cc-by-4.0",
+    "api"
+  ],
+  "author": "Lech Rudnicki",
+  "license": "MIT",
+  "dependencies": {
+    "@astrojs/check": "^0.9.9",
+    "astro": "^6.1.10",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
+  }
+}
