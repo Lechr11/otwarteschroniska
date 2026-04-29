@@ -39,7 +39,7 @@ const totalHeight = bars.length * (barHeight + gap) + gap;
           <text x={labelWidth - 10} y={y + barHeight / 2 + 5} text-anchor="end" font-size="14" fill="currentColor">{bar.label}</text>
           <rect x={labelWidth} y={y} width={barWidth} height={barHeight} fill="#f0f0f0" rx="2" />
           <rect x={labelWidth} y={y} width={filledWidth} height={barHeight} fill="#1a1a1a" rx="2" />
-          <text x={labelWidth + barWidth + 10} y={y + barHeight / 2 + 5} font-size="14" fill="currentColor">{bar.pct.toFixed(1)}%</text>
+          <text x={labelWidth + barWidth + 10} y={y + barHeight / 2 + 5} font-size="14" fill="currentColor">{bar.pct % 1 === 0 ? bar.pct.toFixed(0) : bar.pct.toFixed(1)}%</text>
         </g>
       );
     })}

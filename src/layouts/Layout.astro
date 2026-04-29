@@ -62,9 +62,11 @@ const ogImageURL = new URL(ogImage, Astro.site).href;
       :root {
         --color-bg: #ffffff;
         --color-text: #1a1a1a;
-        --color-muted: #6b6b6b;
+        --color-muted: #475569;       /* darker for better contrast (was #6b6b6b) */
+        --color-muted-soft: #94a3b8;  /* still-muted dla subtle hints */
         --color-border: #e5e5e5;
         --color-accent: #000000;
+        --color-bg-soft: #fafafa;     /* subtler than #f5f5f5 dla code blocks */
         --font-serif: Georgia, 'Times New Roman', serif;
         --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         --font-mono: 'SF Mono', Menlo, Monaco, 'Courier New', monospace;
@@ -84,12 +86,20 @@ const ogImageURL = new URL(ogImage, Astro.site).href;
       h1, h2, h3 {
         font-family: var(--font-serif);
         font-weight: normal;
-        line-height: 1.2;
+        line-height: 1.15;
       }
 
-      h1 { font-size: 2.5rem; margin: 0 0 0.5em; }
-      h2 { font-size: 1.75rem; margin: 1.5em 0 0.5em; }
-      h3 { font-size: 1.25rem; margin: 1em 0 0.5em; }
+      h1 {
+        font-size: 3rem;
+        margin: 0 0 0.5em;
+        letter-spacing: -0.02em;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin: 1.5em 0 0.5em;
+        letter-spacing: -0.01em;
+      }
+      h3 { font-size: 1.2rem; margin: 1em 0 0.5em; }
 
       a {
         color: var(--color-accent);
@@ -142,7 +152,7 @@ const ogImageURL = new URL(ogImage, Astro.site).href;
       }
 
       pre {
-        background: #f5f5f5;
+        background: var(--color-bg-soft);
         padding: 1rem;
         overflow-x: auto;
         border-left: 3px solid var(--color-accent);
@@ -150,7 +160,7 @@ const ogImageURL = new URL(ogImage, Astro.site).href;
       }
 
       code {
-        background: #f5f5f5;
+        background: var(--color-bg-soft);
         padding: 0.1em 0.4em;
         border-radius: 3px;
       }
