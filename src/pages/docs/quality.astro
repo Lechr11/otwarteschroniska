@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Data Quality Score — otwarteschroniska.org.pl" description="Jak działa skala data_quality_score 0.0-1.0.">
+  <h1>Data Quality Score</h1>
+
+  <p>Każde schronisko ma <code>data_quality_score</code> jako float w skali <strong>0.0-1.0</strong>. Wyższy wynik = bardziej kompletne dane.</p>
+
+  <h2>Skala</h2>
+  <table>
+    <thead>
+      <tr><th>Score</th><th>Co oznacza</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1.0</strong></td><td>Komplet danych: nazwa, adres, telefon, email, godziny, geo, www</td></tr>
+      <tr><td><strong>0.8 - 0.99</strong></td><td>Brakuje 1-2 pola opcjonalne</td></tr>
+      <tr><td><strong>0.6 - 0.79</strong></td><td>Brakuje 3+ pól opcjonalnych, ale telefon + adres są</td></tr>
+      <tr><td><strong>0.4 - 0.59</strong></td><td>Mamy podstawy (telefon LUB adres)</td></tr>
+      <tr><td><strong>0.2 - 0.39</strong></td><td>Bardzo niepełne — tylko nazwa + miasto + województwo</td></tr>
+      <tr><td><strong>≤ 0.2</strong></td><td>Krytyczne braki — sprawdź telefonicznie przed wizytą</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Filtrowanie po quality</h2>
+  <pre><code>{`// Tylko schroniska z dobrą jakością (≥ 0.6):
+const r = await fetch('https://otwarteschroniska.org.pl/api/v1/shelters.json');
+const shelters = await r.json();
+const verified = shelters.filter(s => (s.data_quality_score ?? 0) >= 0.6);`}</code></pre>
+
+  <h2>Jak score jest obliczany</h2>
+  <p>Score wyliczany przez Phase 1 scraper na podstawie obecności pól + jakości źródła + cross-source verification. Nie jest to subjective ocena — deterministyczna formuła z 4 warstwami anti-hallucynacji.</p>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  th {
+    font-weight: 600;
+    background: #f9f9f9;
+  }
+</style>

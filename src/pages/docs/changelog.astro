@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { loadMasterData } from '../../lib/data';
+
+const master = loadMasterData();
+---
+
+<Layout title="Changelog — otwarteschroniska.org.pl" description="Historia wersji datasetu.">
+  <h1>Changelog</h1>
+
+  <h2>v1.0.0 — Initial release ({master.generated_at.slice(0, 10)})</h2>
+  <ul>
+    <li>{master.total_shelters} schronisk z 16 województw</li>
+    <li>Schema v1.0 (Polish field names, EN docs w schema.json + types.d.ts)</li>
+    <li>5 endpointów: <code>/manifest</code>, <code>/shelters</code>, <code>/shelters/[woj]</code>, <code>/shelters/by-id/[slug]</code>, <code>/schema</code></li>
+    <li>License: CC-BY 4.0 (data) + MIT (code)</li>
+    <li>Hosting: Vercel hobby + GitHub publiczne repo</li>
+    <li>Live playground na landingu</li>
+  </ul>
+
+  <h2>Roadmap</h2>
+  <ul>
+    <li><strong>Phase 2.5</strong> (~2-3 tyg po launch):
+      <ul>
+        <li>DostInf wnioski 11 HIGH WIW (+30-50 schronisk)</li>
+        <li>Google Places API enrichment dla geo (geo% z 17% do 60%+)</li>
+        <li>Fix scraper slugifier (3 IDs z polskimi diacritics)</li>
+        <li>WWW URL normalization (https:// dla 7 records)</li>
+        <li>Tier 4 web fetch dla godziny + facebook + instagram</li>
+      </ul>
+    </li>
+    <li><strong>Phase 3</strong> (~6mc po launch):
+      <ul>
+        <li>Crowdsourced corrections form (zamiast mailto)</li>
+        <li>Multi-language landing (EN dla international devów)</li>
+        <li>Embeddable widget (mapa schronisk dla zewn. stron)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <Footer slot="footer" />
+</Layout>

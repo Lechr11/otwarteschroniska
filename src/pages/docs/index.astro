@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Dokumentacja — otwarteschroniska.org.pl" description="Pełen opis jak używać otwartego API schronisk dla zwierząt.">
+  <h1>Dokumentacja</h1>
+  <p>Pełen opis jak używać otwartego API schronisk dla zwierząt.</p>
+
+  <ul>
+    <li><a href="/docs/schema/">Schema danych</a> — opis każdego pola w master.json</li>
+    <li><a href="/docs/quality/">Data Quality Score</a> — jak działa skala 0.0-1.0</li>
+    <li><a href="/docs/changelog/">Changelog</a> — historia wersji datasetu</li>
+    <li><a href="https://github.com/Lechr11/otwarteschroniska/blob/main/CONTRIBUTING.md" rel="external">CONTRIBUTING.md</a> — jak zgłaszać korekty / opt-out RODO</li>
+  </ul>
+
+  <Footer slot="footer" />
+</Layout>

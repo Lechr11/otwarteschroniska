@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Schema danych — otwarteschroniska.org.pl" description="Opis każdego pola w master.json + JSON Schema + TypeScript types.">
+  <h1>Schema danych</h1>
+
+  <p>Każde schronisko w datasecie ma następujące pola. Pełna definicja w <a href="/api/v1/schema.json">JSON Schema</a>, TypeScript types: <a href="/api/v1/types.d.ts"><code>types.d.ts</code></a>.</p>
+
+  <h2>Pola obowiązkowe</h2>
+  <ul>
+    <li><code>id</code> — unikalny stable identifier (np. <code>krotoszyn-ceglarska-11</code>)</li>
+    <li><code>nazwa</code> — oficjalna nazwa schroniska</li>
+    <li><code>wojewodztwo</code> — slug województwa (np. <code>wielkopolskie</code>, lowercased bez diakrytyki)</li>
+    <li><code>miasto</code> — miasto</li>
+  </ul>
+
+  <h2>Pola opcjonalne</h2>
+  <ul>
+    <li><code>kod_pocztowy</code> — format <code>XX-XXX</code></li>
+    <li><code>adres</code> — ulica i numer</li>
+    <li><code>telefon</code>, <code>telefon_dodatkowy</code> — numery telefonów</li>
+    <li><code>godziny</code> — godziny otwarcia (free-form, np. <code>"pn-pt 10:00-15:00"</code>)</li>
+    <li><code>email</code>, <code>www</code> — kontakt (uwaga: niektóre WWW bez prefixa <code>https://</code>)</li>
+    <li><code>geo</code> — <code>{`{ lat, lng }`}</code> WGS84 (~17% pokrycia)</li>
+    <li><code>zrodla</code> — URL źródeł danych (provenance, atrybucja oryginalnym źródłom)</li>
+    <li><code>data_quality_score</code> — float 0.0-1.0 (patrz <a href="/docs/quality/">Quality Score</a>)</li>
+    <li><code>opt_out</code> — true jeśli schronisko zażądało RODO opt-out (rekord zachowany dla transparentności, ale oznaczony)</li>
+    <li><code>notatki</code> — wewnętrzne notatki (np. dla opt-out cases)</li>
+  </ul>
+
+  <h2>Stabilność ID</h2>
+  <p>ID schronisk są <strong>stabilne</strong> od Phase 1. Phase 2.5+ enrichment dodaje pola, ale nigdy nie zmienia istniejących ID. Jeśli kiedyś będzie potrzebna zmiana — zostanie ogłoszona w <a href="/docs/changelog/">changelog</a>.</p>
+
+  <h2>Znane quirks (Phase 1)</h2>
+  <p>Niektóre rekordy mają occasional issues które będą naprawione w Phase 2.5:</p>
+  <ul>
+    <li>3 IDs zawierają polskie diacritics lub cyrillic chars (slugifier bug)</li>
+    <li>7 WWW URL bez schemy <code>https://</code> (np. <code>www.example.pl</code>)</li>
+  </ul>
+  <p>Tooling (Zod schema, types.d.ts) traktuje te pola jako luźne stringi — handle gracefully w swojej aplikacji.</p>
+
+  <Footer slot="footer" />
+</Layout>
