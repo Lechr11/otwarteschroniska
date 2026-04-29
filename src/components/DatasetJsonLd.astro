@@ -1,0 +1,60 @@
+---
+// src/components/DatasetJsonLd.astro
+// Schema.org Dataset JSON-LD dla Google Dataset Search ranking (decyzja meta-1).
+
+import { loadMasterData } from '../lib/data';
+
+const master = loadMasterData();
+const apiBase = 'https://otwarteschroniska.vercel.app/api/v1';  // post-domain swap
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Polish Animal Shelters Open Dataset',
+  alternateName: 'otwarteschroniska.org.pl',
+  description: 'Otwarty zbiór danych o schroniskach dla zwierząt w Polsce. Pierwsze publiczne API z pełną listą polskich schronisk. Licencja CC-BY 4.0.',
+  url: 'https://otwarteschroniska.vercel.app',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: {
+    '@type': 'Person',
+    name: 'Lech Rudnicki',
+    url: 'https://www.zatrzymajzegar.pl',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ZatrzymajZegar.pl',
+    url: 'https://www.zatrzymajzegar.pl',
+  },
+  spatialCoverage: {
+    '@type': 'Country',
+    name: 'Poland',
+    identifier: 'PL',
+  },
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${apiBase}/shelters.json`,
+      name: 'Full dataset (JSON)',
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/schema+json',
+      contentUrl: `${apiBase}/schema.json`,
+      name: 'JSON Schema (with EN documentation)',
+    },
+  ],
+  temporalCoverage: `${master.generated_at.slice(0, 10)}/..`,
+  keywords: [
+    'animal shelters', 'Poland', 'open data', 'CC-BY 4.0',
+    'schroniska dla zwierząt', 'adopcja zwierząt', 'API',
+    'Polish open data', 'animal welfare',
+  ],
+  variableMeasured: [
+    { '@type': 'PropertyValue', name: 'Total shelters', value: master.total_shelters },
+  ],
+  isAccessibleForFree: true,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

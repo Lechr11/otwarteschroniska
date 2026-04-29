@@ -1,0 +1,88 @@
+---
+// src/components/Snippet.astro
+// 4 tabs (CSS-only przez radio inputs + labels). Każdy snippet 5-7 linii copy-paste working.
+
+const apiBase = 'https://otwarteschroniska.vercel.app/api/v1';  // post-domain swap to .org.pl
+
+const snippets = {
+  curl: `# Pobierz wszystkie schroniska + filtruj po mieście
+curl ${apiBase}/shelters.json | jq '.[] | select(.miasto == "Wrocław")'`,
+  js: `// W przeglądarce / Node 18+
+const r = await fetch('${apiBase}/shelters.json');
+const shelters = await r.json();
+console.log(\`Łącznie: \${shelters.length} schronisk\`);`,
+  python: `# Wymaga: pip install requests
+import requests
+shelters = requests.get('${apiBase}/shelters.json').json()
+print(f"Łącznie: {len(shelters)} schronisk")
+# Filtruj te z emailem:
+with_email = [s for s in shelters if s.get('email')]`,
+  node: `// Node.js 20+ (built-in fetch)
+const r = await fetch('${apiBase}/shelters.json');
+const data = await r.json();
+const byWoj = data.reduce((acc, s) => {
+  acc[s.wojewodztwo] = (acc[s.wojewodztwo] || 0) + 1;
+  return acc;
+}, {});
+console.table(byWoj);`,
+};
+---
+
+<div class="snippet-tabs">
+  <input type="radio" name="snippet-lang" id="lang-curl" checked />
+  <input type="radio" name="snippet-lang" id="lang-js" />
+  <input type="radio" name="snippet-lang" id="lang-python" />
+  <input type="radio" name="snippet-lang" id="lang-node" />
+
+  <div class="tab-labels">
+    <label for="lang-curl">curl</label>
+    <label for="lang-js">JavaScript</label>
+    <label for="lang-python">Python</label>
+    <label for="lang-node">Node.js</label>
+  </div>
+
+  <div class="tab-content" data-tab="curl"><pre><code>{snippets.curl}</code></pre></div>
+  <div class="tab-content" data-tab="js"><pre><code>{snippets.js}</code></pre></div>
+  <div class="tab-content" data-tab="python"><pre><code>{snippets.python}</code></pre></div>
+  <div class="tab-content" data-tab="node"><pre><code>{snippets.node}</code></pre></div>
+</div>
+
+<style>
+  .snippet-tabs { margin: 1rem 0; }
+  .snippet-tabs input[type="radio"] { display: none; }
+
+  .tab-labels {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .tab-labels label {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+    font-size: 0.9rem;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .tab-labels label:hover { background: #f5f5f5; }
+
+  .tab-content { display: none; margin-top: 0; }
+  .tab-content pre { margin: 0; border-top: none; }
+
+  /* CSS-only tab switching */
+  #lang-curl:checked ~ .tab-labels label[for="lang-curl"],
+  #lang-js:checked ~ .tab-labels label[for="lang-js"],
+  #lang-python:checked ~ .tab-labels label[for="lang-python"],
+  #lang-node:checked ~ .tab-labels label[for="lang-node"] {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+  }
+  #lang-curl:checked ~ .tab-content[data-tab="curl"],
+  #lang-js:checked ~ .tab-content[data-tab="js"],
+  #lang-python:checked ~ .tab-content[data-tab="python"],
+  #lang-node:checked ~ .tab-content[data-tab="node"] {
+    display: block;
+  }
+</style>

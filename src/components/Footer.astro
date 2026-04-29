@@ -1,0 +1,27 @@
+---
+// src/components/Footer.astro
+---
+
+<footer class="site-footer">
+  <p>
+    Powered by <a href="https://www.zatrzymajzegar.pl" rel="external">ZatrzymajZegar.pl</a>
+    &middot; Dane: <a href="https://creativecommons.org/licenses/by/4.0/" rel="external">CC-BY 4.0</a>
+    &middot; <a href="mailto:kontakt@otwarteschroniska.org.pl">Kontakt</a>
+  </p>
+  <p class="muted">
+    Open dataset of Polish animal shelters &middot; First-mover open data initiative
+  </p>
+</footer>
+
+<style>
+  .site-footer {
+    max-width: var(--max-width);
+    margin: 4rem auto 2rem;
+    padding: 2rem 1.5rem 0;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  .site-footer p { margin: 0.25em 0; }
+  .site-footer .muted { color: var(--color-muted); font-size: 0.85rem; }
+</style>
