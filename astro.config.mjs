@@ -9,7 +9,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://otwarteschroniska.vercel.app',
   output: 'static',
-  trailingSlash: 'always',
+  trailingSlash: 'ignore',  // 'always' powoduje 404 dla /api/v1/*.json (dev vs prod inconsistency)
 
   build: {
     format: 'directory',

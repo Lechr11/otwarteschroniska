@@ -1,6 +1,24 @@
 ---
 // src/components/Snippet.astro
 // 4 tabs (CSS-only przez radio inputs + labels). Każdy snippet 5-7 linii copy-paste working.
+// Lekka syntax kolorystyka: komentarze szare (HTML escape + regex per-language).
+
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function highlightCode(code: string, lang: 'shell' | 'js' | 'python'): string {
+  const escaped = escapeHtml(code);
+  // Tylko komentarze — minimalna iniekcja syntax color, nie pełny IDE highlighting.
+  if (lang === 'shell') {
+    return escaped.replace(/^(#.*)$/gm, '<span class="token-comment">$1</span>');
+  }
+  if (lang === 'python') {
+    return escaped.replace(/^(\s*#.*)$/gm, '<span class="token-comment">$1</span>');
+  }
+  // JS/TS — single-line + JSDoc-style
+  return escaped.replace(/(\/\/.*)$/gm, '<span class="token-comment">$1</span>');
+}
 
 const apiBase = 'https://otwarteschroniska.vercel.app/api/v1';  // post-domain swap to .org.pl
 
@@ -41,10 +59,10 @@ console.table(byWoj);`,
     <label for="lang-node">Node.js</label>
   </div>
 
-  <div class="tab-content" data-tab="curl"><pre><code>{snippets.curl}</code></pre></div>
-  <div class="tab-content" data-tab="js"><pre><code>{snippets.js}</code></pre></div>
-  <div class="tab-content" data-tab="python"><pre><code>{snippets.python}</code></pre></div>
-  <div class="tab-content" data-tab="node"><pre><code>{snippets.node}</code></pre></div>
+  <div class="tab-content" data-tab="curl"><pre><code set:html={highlightCode(snippets.curl, 'shell')} /></pre></div>
+  <div class="tab-content" data-tab="js"><pre><code set:html={highlightCode(snippets.js, 'js')} /></pre></div>
+  <div class="tab-content" data-tab="python"><pre><code set:html={highlightCode(snippets.python, 'python')} /></pre></div>
+  <div class="tab-content" data-tab="node"><pre><code set:html={highlightCode(snippets.node, 'js')} /></pre></div>
 </div>
 
 <style>
@@ -53,31 +71,42 @@ console.table(byWoj);`,
 
   .tab-labels {
     display: flex;
-    gap: 0;
+    gap: 0.25rem;
     border-bottom: 1px solid var(--color-border);
   }
   .tab-labels label {
-    padding: 0.5rem 1rem;
+    padding: 0.55rem 1rem;
     cursor: pointer;
-    border: 1px solid transparent;
-    border-bottom: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
     user-select: none;
-    transition: background 0.15s;
+    color: var(--color-muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   }
-  .tab-labels label:hover { background: #f5f5f5; }
+  .tab-labels label:hover {
+    color: var(--color-text);
+    background: #fafafa;
+  }
 
   .tab-content { display: none; margin-top: 0; }
-  .tab-content pre { margin: 0; border-top: none; }
+  .tab-content pre { margin: 0; border-top: none; border-radius: 0 0 4px 4px; }
+
+  /* Komentarze szare (lekka syntax kolorystyka) */
+  .token-comment {
+    color: #94a3b8;
+    font-style: italic;
+  }
 
   /* CSS-only tab switching */
   #lang-curl:checked ~ .tab-labels label[for="lang-curl"],
   #lang-js:checked ~ .tab-labels label[for="lang-js"],
   #lang-python:checked ~ .tab-labels label[for="lang-python"],
   #lang-node:checked ~ .tab-labels label[for="lang-node"] {
-    background: var(--color-accent);
-    color: white;
-    border-color: var(--color-accent);
+    color: var(--color-text);
+    border-bottom-color: var(--color-accent);
+    background: transparent;
   }
   #lang-curl:checked ~ .tab-content[data-tab="curl"],
   #lang-js:checked ~ .tab-content[data-tab="js"],

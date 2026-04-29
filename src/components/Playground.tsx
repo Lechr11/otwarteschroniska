@@ -22,7 +22,10 @@ const WOJEWODZTWA: Array<[string, string]> = [
   ['zachodniopomorskie', 'Zachodniopomorskie'],
 ];
 
-const API_BASE = 'https://otwarteschroniska.vercel.app/api/v1';
+// Display URL (pokazywany w endpoint label) — production absolute.
+// Fetch URL — relative (same-origin), działa w dev (localhost:4321) i prod (otwarteschroniska.org.pl).
+const DISPLAY_API = 'https://otwarteschroniska.vercel.app/api/v1';
+const FETCH_API = '/api/v1';
 
 export default function Playground() {
   const [woj, setWoj] = useState<string>('');
@@ -40,7 +43,7 @@ export default function Playground() {
     setLoading(true);
     setError(null);
     try {
-      const r = await fetch(`${API_BASE}/shelters/${newWoj}.json`);
+      const r = await fetch(`${FETCH_API}/shelters/${newWoj}.json`);
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const json = await r.json();
       setData(json);
@@ -52,7 +55,7 @@ export default function Playground() {
     }
   };
 
-  const endpoint = woj ? `GET ${API_BASE}/shelters/${woj}.json` : 'GET /api/v1/shelters/{wojewodztwo}.json';
+  const endpoint = woj ? `GET ${DISPLAY_API}/shelters/${woj}.json` : 'GET /api/v1/shelters/{wojewodztwo}.json';
 
   const responseText = data
     ? JSON.stringify(data, null, 2)
