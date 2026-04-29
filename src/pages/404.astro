@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="404 — Nie znaleziono | otwarteschroniska.org.pl"
+  description="Strona lub endpoint nie istnieje."
+>
+  <section class="page-404">
+    <p class="status-404"><span class="code">404</span> Nie znaleziono</p>
+    <h1>Tej strony tu nie ma</h1>
+    <p class="lead">
+      Adres który wpisałeś nie istnieje. Poniżej kilka sugestii.
+    </p>
+
+    <div class="suggestions">
+      <a href="/" class="suggestion">
+        <span class="suggestion-label">Strona główna</span>
+        <span class="suggestion-desc">Live playground + 4 snippety + dokumentacja</span>
+        <span class="suggestion-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/api/v1/manifest.json" class="suggestion">
+        <span class="suggestion-label">API manifest</span>
+        <span class="suggestion-desc">Lista wszystkich endpointów + coverage stats</span>
+        <span class="suggestion-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/docs/" class="suggestion">
+        <span class="suggestion-label">Dokumentacja</span>
+        <span class="suggestion-desc">Schema, quality score, changelog</span>
+        <span class="suggestion-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="https://github.com/Lechr11/otwarteschroniska/issues/new" rel="external" class="suggestion">
+        <span class="suggestion-label">Zgłoś błąd</span>
+        <span class="suggestion-desc">GitHub Issues — broken link, missing docs</span>
+        <span class="suggestion-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <p class="hint muted">
+      Próbujesz <code>/api/v1/...</code>? Sprawdź <a href="/api/v1/manifest.json">manifest</a>.
+    </p>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .page-404 {
+    margin: 4rem 0 2rem;
+    text-align: center;
+  }
+  .status-404 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    margin: 0 0 1rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: #b91c1c;
+  }
+  .status-404 .code {
+    font-weight: 600;
+  }
+  .page-404 h1 {
+    margin: 0.5em 0;
+  }
+  .page-404 .lead {
+    color: var(--color-muted);
+    margin: 0.5em 0 2rem;
+  }
+  .suggestions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.75rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: left;
+  }
+  .suggestion {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    column-gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-text);
+    background: white;
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .suggestion:hover {
+    border-color: var(--color-text);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    opacity: 1;
+  }
+  .suggestion-label {
+    grid-column: 1;
+    grid-row: 1;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .suggestion-desc {
+    grid-column: 1;
+    grid-row: 2;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+  }
+  .suggestion-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+  .suggestion:hover .suggestion-arrow {
+    color: var(--color-text);
+    transform: translateX(2px);
+  }
+  .hint {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .suggestion, .suggestion-arrow { transition: none; }
+    .suggestion:hover { transform: none; }
+    .suggestion:hover .suggestion-arrow { transform: none; }
+  }
+</style>

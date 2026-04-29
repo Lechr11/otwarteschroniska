@@ -52,14 +52,38 @@ const master = loadMasterData();
 
   <section class="section">
     <h2>Co dalej?</h2>
-    <ul class="next-links">
-      <li><a href="/docs/">Pełna dokumentacja</a></li>
-      <li><a href="/api/v1/schema.json">JSON Schema</a></li>
-      <li><a href="/docs/quality/">Jak działa <code>data_quality_score</code></a></li>
-      <li><a href="/docs/changelog/">Changelog</a></li>
-      <li><a href="https://github.com/Lechr11/otwarteschroniska" rel="external">GitHub repo (CC-BY 4.0)</a></li>
-      <li><a href="https://www.zatrzymajzegar.pl/schroniska/" rel="external">Showcase: ZatrzymajZegar.pl</a></li>
-    </ul>
+    <div class="next-cards">
+      <a href="/docs/" class="next-card">
+        <span class="next-card-label">Pełna dokumentacja</span>
+        <span class="next-card-desc">Schema, quality score, changelog</span>
+        <span class="next-card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/api/v1/schema.json" class="next-card">
+        <span class="next-card-label">JSON Schema</span>
+        <span class="next-card-desc">Walidacja Zod / Joi / Ajv</span>
+        <span class="next-card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/docs/quality/" class="next-card">
+        <span class="next-card-label">Quality Score</span>
+        <span class="next-card-desc">Jak działa skala 0.0-1.0</span>
+        <span class="next-card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/docs/changelog/" class="next-card">
+        <span class="next-card-label">Changelog</span>
+        <span class="next-card-desc">Historia wersji datasetu</span>
+        <span class="next-card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="https://github.com/Lechr11/otwarteschroniska" rel="external" class="next-card">
+        <span class="next-card-label">GitHub repo</span>
+        <span class="next-card-desc">CC-BY 4.0 · Open source kod Astro</span>
+        <span class="next-card-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a href="https://www.zatrzymajzegar.pl/schroniska/" rel="external" class="next-card">
+        <span class="next-card-label">Showcase</span>
+        <span class="next-card-desc">ZatrzymajZegar.pl — pierwszy konsument API</span>
+        <span class="next-card-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
   </section>
 
   <Footer slot="footer" />
@@ -98,6 +122,13 @@ const master = loadMasterData();
     0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
     70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
     100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+  /* Respect prefers-reduced-motion: wyłącz animacje + transformacje */
+  @media (prefers-reduced-motion: reduce) {
+    .status-badge .dot { animation: none; }
+    .btn, .next-card, .next-card-arrow { transition: none; }
+    .btn:hover, .next-card:hover { transform: none; }
+    .next-card:hover .next-card-arrow { transform: none; }
   }
   .lead {
     font-size: 1.15rem;
@@ -138,15 +169,59 @@ const master = loadMasterData();
   .section {
     margin: 2.5rem 0;
   }
-  .next-links {
-    list-style: none;
-    padding: 0;
+  /* Cards "Co dalej?" — premium docs feel (Vercel/Resend style) */
+  .next-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.5rem;
+    gap: 0.75rem;
+    margin-top: 1rem;
   }
-  .next-links li {
-    padding: 0.5rem 0;
+  .next-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    column-gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    background: white;
   }
+  .next-card:hover {
+    border-color: var(--color-text);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    opacity: 1;
+  }
+  .next-card-label {
+    grid-column: 1;
+    grid-row: 1;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .next-card-desc {
+    grid-column: 1;
+    grid-row: 2;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+  }
+  .next-card-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+  .next-card:hover .next-card-arrow {
+    color: var(--color-text);
+    transform: translateX(2px);
+  }
+
   .muted { color: var(--color-muted); font-size: 0.9rem; }
 </style>
