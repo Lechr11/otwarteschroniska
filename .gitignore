@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Vercel
+.vercel/
+
+# Superpowers (Visual Companion mockups, brainstorm sessions)
+.superpowers/
+
+# OS
+Thumbs.db
