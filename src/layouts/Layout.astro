@@ -29,16 +29,24 @@ const ogImageURL = new URL(ogImage, Astro.site).href;
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="otwarteschroniska.org.pl" />
+    <meta property="og:locale" content="pl_PL" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:secure_url" content={ogImageURL} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Otwarte API schronisk dla zwierząt w Polsce. 127 schronisk z 16 województw, CC-BY 4.0." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Otwarte API schronisk dla zwierząt w Polsce" />
 
     <slot name="head" />
   </head>
