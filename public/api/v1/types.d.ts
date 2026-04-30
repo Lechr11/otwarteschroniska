@@ -1,5 +1,5 @@
 // public/api/v1/types.d.ts
-// Polish Animal Shelters Open Dataset v1.0 — TypeScript types
+// Polish Animal Shelters Open Dataset v1.0 · TypeScript types
 // License: CC-BY 4.0 (data) | https://otwarteschroniska.org.pl
 //
 // Usage:

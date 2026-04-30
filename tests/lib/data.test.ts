@@ -41,7 +41,7 @@ describe('master.json schema validation', () => {
   });
 });
 
-describe('lib/data — getters', () => {
+describe('lib/data · getters', () => {
   it('loadShelters returns 127 records', () => {
     const shelters = loadShelters();
     expect(shelters.length).toBe(127);

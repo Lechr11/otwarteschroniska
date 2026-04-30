@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { computeCoverage } from '../../src/lib/manifest';
 import type { Shelter } from '../../src/schemas/shelter';
 
-describe('lib/manifest — computeCoverage', () => {
+describe('lib/manifest · computeCoverage', () => {
   it('empty array returns 0%', () => {
     const c = computeCoverage([]);
     expect(c.telefon_pct).toBe(0);
