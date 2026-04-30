@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📧 Email contact
+    url: mailto:kontakt@otwarteschroniska.org.pl
+    about: Quick questions, RODO opt-out, partnership inquiries
+  - name: 📚 Documentation
+    url: https://otwarteschroniska.org.pl/docs/
+    about: API schema, quality score explanation, changelog
+  - name: 🌐 Live API
+    url: https://otwarteschroniska.org.pl/
+    about: Try the live playground + 4 quickstart snippets
