@@ -24,7 +24,7 @@ export const GET: APIRoute = () => {
       types: '/api/v1/types.d.ts',
     },
     coverage,
-    documentation: 'https://otwarteschroniska.vercel.app/docs/',
+    documentation: 'https://otwarteschroniska.org.pl/docs/',
     license_url: 'https://creativecommons.org/licenses/by/4.0/',
   };
 

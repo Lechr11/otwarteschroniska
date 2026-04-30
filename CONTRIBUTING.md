@@ -11,7 +11,7 @@ Found an error in shelter data (wrong phone, outdated address, wrong opening hou
 ### Option 1: Email (preferred)
 Send to `kontakt@otwarteschroniska.org.pl` with:
 - Shelter ID (e.g., `krotoszyn-ceglarska-11`)
-- URL of the shelter on https://otwarteschroniska.vercel.app/api/v1/shelters/by-id/{id}.json
+- URL of the shelter on https://otwarteschroniska.org.pl/api/v1/shelters/by-id/{id}.json
 - What needs to be corrected
 - Source of correct information (link, document, your role at shelter)
 

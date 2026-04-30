@@ -20,7 +20,7 @@ function highlightCode(code: string, lang: 'shell' | 'js' | 'python'): string {
   return escaped.replace(/(\/\/.*)$/gm, '<span class="token-comment">$1</span>');
 }
 
-const apiBase = 'https://otwarteschroniska.vercel.app/api/v1';  // post-domain swap to .org.pl
+const apiBase = 'https://otwarteschroniska.org.pl/api/v1';  // post-domain swap to .org.pl
 
 const snippets = {
   curl: `# Pobierz wszystkie schroniska + filtruj po mieście

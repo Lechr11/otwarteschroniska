@@ -3,20 +3,20 @@
 > **Pierwsze otwarte API schronisk dla zwierząt w Polsce.**
 > 127 schronisk · 16 województw · CC-BY 4.0
 
-🌐 **Live:** https://otwarteschroniska.vercel.app (post-launch: `.org.pl`)
-📊 **Endpoints:** [`/api/v1/shelters.json`](https://otwarteschroniska.vercel.app/api/v1/shelters.json) · [`/api/v1/schema.json`](https://otwarteschroniska.vercel.app/api/v1/schema.json)
+🌐 **Live:** https://otwarteschroniska.org.pl
+📊 **Endpoints:** [`/api/v1/shelters.json`](https://otwarteschroniska.org.pl/api/v1/shelters.json) · [`/api/v1/schema.json`](https://otwarteschroniska.org.pl/api/v1/schema.json)
 📜 **License:** CC-BY 4.0 (data) + MIT (code)
 
 ## Quickstart (4 sposoby)
 
 ### curl
 ```bash
-curl https://otwarteschroniska.vercel.app/api/v1/shelters.json | jq '.[] | select(.miasto == "Wrocław")'
+curl https://otwarteschroniska.org.pl/api/v1/shelters.json | jq '.[] | select(.miasto == "Wrocław")'
 ```
 
 ### JavaScript (browser/Node 18+)
 ```js
-const r = await fetch('https://otwarteschroniska.vercel.app/api/v1/shelters.json');
+const r = await fetch('https://otwarteschroniska.org.pl/api/v1/shelters.json');
 const shelters = await r.json();
 console.log(`${shelters.length} schronisk`);
 ```
@@ -24,13 +24,13 @@ console.log(`${shelters.length} schronisk`);
 ### Python
 ```python
 import requests
-shelters = requests.get('https://otwarteschroniska.vercel.app/api/v1/shelters.json').json()
+shelters = requests.get('https://otwarteschroniska.org.pl/api/v1/shelters.json').json()
 print(f"{len(shelters)} schronisk")
 ```
 
 ### Node.js
 ```js
-const r = await fetch('https://otwarteschroniska.vercel.app/api/v1/shelters.json');
+const r = await fetch('https://otwarteschroniska.org.pl/api/v1/shelters.json');
 const data = await r.json();
 const byWoj = data.reduce((acc, s) => { acc[s.wojewodztwo] = (acc[s.wojewodztwo] || 0) + 1; return acc; }, {});
 console.table(byWoj);
@@ -55,11 +55,11 @@ CORS: `Access-Control-Allow-Origin: *`. Cache-Control: `public, max-age=3600, st
 
 ## Documentation
 
-📚 https://otwarteschroniska.vercel.app/docs/
+📚 https://otwarteschroniska.org.pl/docs/
 
-- [Schema danych](https://otwarteschroniska.vercel.app/docs/schema/)
-- [Data Quality Score](https://otwarteschroniska.vercel.app/docs/quality/)
-- [Changelog](https://otwarteschroniska.vercel.app/docs/changelog/)
+- [Schema danych](https://otwarteschroniska.org.pl/docs/schema/)
+- [Data Quality Score](https://otwarteschroniska.org.pl/docs/quality/)
+- [Changelog](https://otwarteschroniska.org.pl/docs/changelog/)
 
 ## License
 
