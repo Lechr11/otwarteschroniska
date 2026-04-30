@@ -8,7 +8,7 @@ import Footer from '../../components/Footer.astro';
 
   <p>Każde schronisko ma <code>data_quality_score</code> jako float w skali <strong>0.0-1.0</strong>. Wyższy wynik = bardziej kompletne dane.</p>
 
-  <h2>Skala</h2>
+  <h2>Skala teoretyczna</h2>
   <table>
     <thead>
       <tr><th>Score</th><th>Co oznacza</th></tr>
@@ -23,14 +23,33 @@ import Footer from '../../components/Footer.astro';
     </tbody>
   </table>
 
+  <h2>Realny rozkład v1.0</h2>
+  <p>Phase 1 scraper jest konserwatywny, dlatego scores są zawężone do zakresu <strong>0.50 - 0.75</strong>:</p>
+  <table>
+    <thead>
+      <tr><th>Bucket</th><th>Schroniska</th><th>%</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0.4 - 0.59</td><td>120</td><td>94.5%</td></tr>
+      <tr><td>0.6 - 0.79</td><td>7</td><td>5.5%</td></tr>
+      <tr><td>≥ 0.8</td><td>0</td><td>0%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>AVG: 0.51 · MIN: 0.50 · MAX: 0.75</strong></p>
+  <p>Phase 2.5 enrichment (Google Places dla geo, DostInf wnioski o brakujące dane WIW) podniesie spektrum do 0.6-0.9 dla większości rekordów.</p>
+
   <h2>Filtrowanie po quality</h2>
-  <pre><code>{`// Tylko schroniska z dobrą jakością (≥ 0.6):
+  <p>Praktyczny threshold dla v1.0 to <code>≥ 0.55</code> (top ~30 schronisk z najpełniejszymi danymi):</p>
+  <pre><code>{`// v1.0: top schroniska z pełnymi danymi (telefon + adres + email lub www)
 const r = await fetch('https://otwarteschroniska.org.pl/api/v1/shelters.json');
 const shelters = await r.json();
-const verified = shelters.filter(s => (s.data_quality_score ?? 0) >= 0.6);`}</code></pre>
+const top = shelters.filter(s => (s.data_quality_score ?? 0) >= 0.55);
+console.log(\`\${top.length} schronisk z dobrym pokryciem danych\`);
+
+// Po Phase 2.5 enrichment: threshold ≥ 0.7 będzie sensowniejszy.`}</code></pre>
 
   <h2>Jak score jest obliczany</h2>
-  <p>Score wyliczany przez Phase 1 scraper na podstawie obecności pól + jakości źródła + cross-source verification. Nie jest to subjective ocena, deterministyczna formuła z 4 warstwami anti-hallucynacji.</p>
+  <p>Score wyliczany przez Phase 1 scraper na podstawie obecności pól + jakości źródła + cross-source verification. Nie jest to subjective ocena, deterministyczna formuła z 4 warstwami anti-hallucynacji (Pydantic strict + citation verify + cross-source fuzzy + sample audit).</p>
 
   <Footer slot="footer" />
 </Layout>
