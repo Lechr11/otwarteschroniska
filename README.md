@@ -16,11 +16,11 @@
 
 ## Why this exists
 
-Polskie schroniska dla zwierząt walczą o widoczność. Nie ma centralnej bazy ich danych — każde schronisko żyje na własnej (często niewidocznej) stronie, w przepisach gminnych, w dokumentach WIW.
+Polskie schroniska dla zwierząt walczą o widoczność. Nie ma centralnej bazy ich danych, każde schronisko żyje na własnej (często niewidocznej) stronie, w przepisach gminnych, w dokumentach WIW.
 
 Ten dataset to próba zmiany. **Otwarte API, darmowe, bez kont, bez kluczy.** Każdy programista może w 5 minut zbudować apkę pomagającą znaleźć schronisko w swojej okolicy. Każdy dziennikarz może zacytować dane bez pytania nikogo o pozwolenie. Każdy aktywista może analizować pokrycie regionów i kierować pomoc tam, gdzie najbardziej potrzeba.
 
-**Im więcej osób tych danych użyje — tym więcej psów i kotów znajdzie dom.**
+**Im więcej osób tych danych użyje, tym więcej psów i kotów znajdzie dom.**
 
 ## Quickstart (4 sposoby)
 
@@ -66,7 +66,7 @@ CORS: `Access-Control-Allow-Origin: *`. Cache-Control: `public, max-age=3600, st
 
 ## Showcase
 
-**Pierwsza aplikacja korzystająca z API:** [ZatrzymajZegar.pl/schroniska/](https://www.zatrzymajzegar.pl/schroniska/) — non-profit platforma adopcyjna.
+**Pierwsza aplikacja korzystająca z API:** [ZatrzymajZegar.pl/schroniska/](https://www.zatrzymajzegar.pl/schroniska/), non-profit platforma adopcyjna.
 
 ## Documentation
 
@@ -79,14 +79,14 @@ CORS: `Access-Control-Allow-Origin: *`. Cache-Control: `public, max-age=3600, st
 ## License
 
 - **Code (Astro):** [MIT](LICENSE)
-- **Data (master.json):** [CC-BY 4.0](LICENSE-DATA) — attribution required (link to `otwarteschroniska.org.pl`)
+- **Data (master.json):** [CC-BY 4.0](LICENSE-DATA), attribution required (link to `otwarteschroniska.org.pl`)
 
 ## Contributing
 
-Patrz [CONTRIBUTING.md](CONTRIBUTING.md) — zgłaszanie korekt, opt-out RODO, dodawanie schronisk.
+Patrz [CONTRIBUTING.md](CONTRIBUTING.md), zgłaszanie korekt, opt-out RODO, dodawanie schronisk.
 
 ## Maintainer
 
 Lech Rudnicki · `kontakt@otwarteschroniska.org.pl`
 
-Non-profit project. Built and maintained as side initiative — for animal shelters, not for profit. Patches, corrections, and good ideas welcome.
+Non-profit project. Built and maintained as side initiative. For animal shelters, not for profit. Patches, corrections, and good ideas welcome.

@@ -1,6 +1,6 @@
 ---
 name: 📝 Data correction
-about: Wrong shelter info (phone, address, hours, etc.) — najczęściej używany template
+about: Wrong shelter info (phone, address, hours, etc.), najczęściej używany template
 title: "[DATA] "
 labels: data-correction
 assignees: Lechr11

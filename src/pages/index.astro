@@ -14,7 +14,7 @@ const master = loadMasterData();
 ---
 
 <Layout
-  title="otwarteschroniska.org.pl — Otwarte API schronisk dla zwierząt w Polsce"
+  title="otwarteschroniska.org.pl, Otwarte API schronisk dla zwierząt w Polsce"
   description={`${master.total_shelters} schronisk · 16 województw · CC-BY 4.0 · Pierwsze otwarte API w Polsce`}
 >
   <DatasetJsonLd slot="head" />
@@ -33,7 +33,7 @@ const master = loadMasterData();
 
   <section class="section">
     <h2>Wypróbuj API teraz</h2>
-    <p>Wybierz województwo aby zobaczyć przykładową odpowiedź — bez kont, bez kluczy, bez setupu:</p>
+    <p>Wybierz województwo aby zobaczyć przykładową odpowiedź, bez kont, bez kluczy, bez setupu:</p>
     <Playground client:visible />
   </section>
 
@@ -46,7 +46,7 @@ const master = loadMasterData();
   <section class="section">
     <CoverageChart />
     <p class="muted">
-      Pomóż uzupełnić dziurawe pola — <a href="mailto:kontakt@otwarteschroniska.org.pl?subject=Korekta+danych">zgłoś korektę</a>.
+      Pomóż uzupełnić dziurawe pola, <a href="mailto:kontakt@otwarteschroniska.org.pl?subject=Korekta+danych">zgłoś korektę</a>.
     </p>
   </section>
 
@@ -80,7 +80,7 @@ const master = loadMasterData();
       </a>
       <a href="https://www.zatrzymajzegar.pl/schroniska/" rel="external" class="next-card">
         <span class="next-card-label">Showcase</span>
-        <span class="next-card-desc">ZatrzymajZegar.pl — pierwszy konsument API</span>
+        <span class="next-card-desc">ZatrzymajZegar.pl, pierwszy konsument API</span>
         <span class="next-card-arrow" aria-hidden="true">↗</span>
       </a>
     </div>
@@ -169,7 +169,7 @@ const master = loadMasterData();
   .section {
     margin: 2.5rem 0;
   }
-  /* Cards "Co dalej?" — premium docs feel (Vercel/Resend style) */
+  /* Cards "Co dalej?", premium docs feel (Vercel/Resend style) */
   .next-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

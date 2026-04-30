@@ -22,8 +22,8 @@ const WOJEWODZTWA: Array<[string, string]> = [
   ['zachodniopomorskie', 'Zachodniopomorskie'],
 ];
 
-// Display URL (pokazywany w endpoint label) — production absolute.
-// Fetch URL — relative (same-origin), działa w dev (localhost:4321) i prod (otwarteschroniska.org.pl).
+// Display URL (pokazywany w endpoint label), production absolute.
+// Fetch URL, relative (same-origin), działa w dev (localhost:4321) i prod (otwarteschroniska.org.pl).
 const DISPLAY_API = 'https://otwarteschroniska.org.pl/api/v1';
 const FETCH_API = '/api/v1';
 

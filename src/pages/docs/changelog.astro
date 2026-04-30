@@ -6,10 +6,10 @@ import { loadMasterData } from '../../lib/data';
 const master = loadMasterData();
 ---
 
-<Layout title="Changelog — otwarteschroniska.org.pl" description="Historia wersji datasetu.">
+<Layout title="Changelog | otwarteschroniska.org.pl" description="Historia wersji datasetu.">
   <h1>Changelog</h1>
 
-  <h2>v1.0.0 — Initial release ({master.generated_at.slice(0, 10)})</h2>
+  <h2>v1.0.0 · Initial release ({master.generated_at.slice(0, 10)})</h2>
   <ul>
     <li>{master.total_shelters} schronisk z 16 województw</li>
     <li>Schema v1.0 (Polish field names, EN docs w schema.json + types.d.ts)</li>

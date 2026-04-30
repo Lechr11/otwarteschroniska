@@ -1,5 +1,5 @@
 // src/pages/api/v1/shelters/by-id/[slug].json.ts
-// /api/v1/shelters/by-id/{id}.json — pojedyncze schronisko per stable ID (127 endpointów).
+// /api/v1/shelters/by-id/{id}.json, pojedyncze schronisko per stable ID (127 endpointów).
 
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { loadShelters, getShelter } from '../../../../../lib/data';

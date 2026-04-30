@@ -1,5 +1,5 @@
 // src/pages/api/v1/manifest.json.ts
-// /api/v1/manifest.json — metadata + coverage stats.
+// /api/v1/manifest.json, metadata + coverage stats.
 
 import type { APIRoute } from 'astro';
 import { loadMasterData, loadShelters } from '../../../lib/data';

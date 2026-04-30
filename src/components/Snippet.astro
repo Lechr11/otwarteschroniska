@@ -9,14 +9,14 @@ function escapeHtml(s: string): string {
 
 function highlightCode(code: string, lang: 'shell' | 'js' | 'python'): string {
   const escaped = escapeHtml(code);
-  // Tylko komentarze — minimalna iniekcja syntax color, nie pełny IDE highlighting.
+  // Tylko komentarze, minimalna iniekcja syntax color, nie pełny IDE highlighting.
   if (lang === 'shell') {
     return escaped.replace(/^(#.*)$/gm, '<span class="token-comment">$1</span>');
   }
   if (lang === 'python') {
     return escaped.replace(/^(\s*#.*)$/gm, '<span class="token-comment">$1</span>');
   }
-  // JS/TS — single-line + JSDoc-style
+  // JS/TS, single-line + JSDoc-style
   return escaped.replace(/(\/\/.*)$/gm, '<span class="token-comment">$1</span>');
 }
 

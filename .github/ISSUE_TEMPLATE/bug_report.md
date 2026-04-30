@@ -31,4 +31,4 @@ paste here
 
 ---
 
-Thanks for reporting! Single-maintainer non-profit project — response time 1-7 days.
+Thanks for reporting! Single-maintainer non-profit project, response time 1-7 days.

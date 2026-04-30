@@ -1,5 +1,5 @@
 // src/pages/api/v1/schema.json.ts
-// /api/v1/schema.json — JSON Schema draft 2020-12 z opisami EN per pole.
+// /api/v1/schema.json, JSON Schema draft 2020-12 z opisami EN per pole.
 
 import type { APIRoute } from 'astro';
 

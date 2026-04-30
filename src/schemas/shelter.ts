@@ -1,14 +1,14 @@
 // src/schemas/shelter.ts
 // Zod schema dla rekordu schroniska + master.json (top-level package).
-// Schema mirror Phase 1 master.json schema v1.0 — sync wymaga ręcznego update gdy bumpujemy schema_version.
+// Schema mirror Phase 1 master.json schema v1.0, sync wymaga ręcznego update gdy bumpujemy schema_version.
 
 import { z } from 'zod';
 
 // Schema pojedynczego schroniska (rekord w `shelters[]`).
-// Permissive constraints — Phase 1 scraper data ma occasional polish chars w IDs + www bez schemy.
+// Permissive constraints, Phase 1 scraper data ma occasional polish chars w IDs + www bez schemy.
 // Zluzowane vs spec wstępny: id (pozwala diacritics), www (string, nie strict URL).
 export const ShelterSchema = z.object({
-  id: z.string().min(1),  // luźne — Phase 1 IDs mogą mieć diacritics (do poprawy w Phase 2.5)
+  id: z.string().min(1),  // luźne, Phase 1 IDs mogą mieć diacritics (do poprawy w Phase 2.5)
   nazwa: z.string().min(1),
   wojewodztwo: z.string().min(1),
   miasto: z.string().min(1),
@@ -17,8 +17,8 @@ export const ShelterSchema = z.object({
   telefon: z.string().nullable().optional(),
   telefon_dodatkowy: z.string().nullable().optional(),
   godziny: z.string().nullable().optional(),
-  email: z.string().nullable().optional(),  // luźne — niektóre emaile mają nietypowe formaty
-  www: z.string().nullable().optional(),  // luźne — niektóre WWW bez https:// schemy (np. "www.example.pl")
+  email: z.string().nullable().optional(),  // luźne, niektóre emaile mają nietypowe formaty
+  www: z.string().nullable().optional(),  // luźne, niektóre WWW bez https:// schemy (np. "www.example.pl")
   geo: z.object({
     lat: z.number(),
     lng: z.number(),

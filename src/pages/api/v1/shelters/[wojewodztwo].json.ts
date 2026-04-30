@@ -1,5 +1,5 @@
 // src/pages/api/v1/shelters/[wojewodztwo].json.ts
-// /api/v1/shelters/{wojewodztwo}.json — schroniska per województwo (16 endpointów).
+// /api/v1/shelters/{wojewodztwo}.json, schroniska per województwo (16 endpointów).
 
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { loadShelters, getSheltersByWojewodztwo, getUniqueWojewodztwa } from '../../../../lib/data';

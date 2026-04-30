@@ -9,7 +9,7 @@ assignees: Lechr11
 **What would you like to see added?**
 
 **Why is this useful for you / for animal shelters?**
-(Mission-driven project — feature requests showing impact on shelters get priority.)
+(Mission-driven project, feature requests showing impact on shelters get priority.)
 
 **Proposed implementation (optional):**
 - New endpoint? Path: `/api/v1/...`
@@ -22,7 +22,7 @@ assignees: Lechr11
 
 ---
 
-Single-maintainer project — feature requests evaluated on:
+Single-maintainer project, feature requests evaluated on:
 1. Impact on shelters / adoption rate
 2. Effort vs value (YAGNI principle)
 3. Breaking change implications (v2 needed?)

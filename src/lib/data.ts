@@ -1,6 +1,6 @@
 // src/lib/data.ts
 // Load + query helpers dla master.json (parsowanie + walidacja Zod w build-time).
-// Cached przez moduł — 1 parse per build.
+// Cached przez moduł, 1 parse per build.
 
 import { MasterDataSchema, type Shelter, type MasterData } from '../schemas/shelter';
 import rawData from '../data/master.json';
