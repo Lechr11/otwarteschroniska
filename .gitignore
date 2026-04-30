@@ -22,15 +22,5 @@ npm-debug.log*
 # Vercel
 .vercel/
 
-# Superpowers (Visual Companion mockups, brainstorm sessions)
-.superpowers/
-
-# Internal kitchen — design docs, plans, decisions, AI prompts (lokalnie tylko, NIE public)
-docs/superpowers/
-
-# Internal operations — runbook + scripts (Lech-only, hardcoded paths, deploy hooks)
-RUNBOOK.md
-scripts/
-
 # OS
 Thumbs.db
