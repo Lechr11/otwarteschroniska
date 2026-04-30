@@ -1,0 +1,27 @@
+# otwarteschroniska.org.pl — robots.txt
+# Open data API. Wszystkie boty welcome (search engines, social previews, AI crawlers, archives).
+
+User-agent: *
+Allow: /
+
+# Explicit allow dla social media preview bots (FB Sharing Debugger fix)
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# Sitemap (Astro auto-generated)
+Sitemap: https://otwarteschroniska.org.pl/sitemap-index.xml
